@@ -25,6 +25,10 @@
 
 #define RT_TAG	'1178'
 
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 0) && LINUX_VERSION_CODE < KERNEL_VERSION(6, 13, 0))
+MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);
+#endif
+
 #ifdef DBG_MEMORY_LEAK
 atomic_t _malloc_cnt = ATOMIC_INIT(0);
 atomic_t _malloc_size = ATOMIC_INIT(0);
