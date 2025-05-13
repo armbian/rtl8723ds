@@ -6,7 +6,7 @@ build cleanly for kernels through v5.9.
 Run the following commands in the Linux terminal.
 
 ```
-git clone https://github.com/lwfinger/rtl8723ds.git
+git clone https://github.com/armbian/rtl8723ds.git
 cd rtl8723ds
 make
 sudo make install
@@ -19,7 +19,7 @@ If you do not want two devices (station and an access point) separately, then fo
 
 Step - 1: Run the following commands in the Linux terminal. 
 ```
-git clone https://github.com/lwfinger/rtl8723ds.git
+git clone https://github.com/armbian/rtl8723ds.git
 cd rtl8723ds
 nano Makefile
 ```
