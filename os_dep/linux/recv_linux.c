@@ -866,7 +866,11 @@ void _rtw_reordering_ctrl_timeout_handler(void *FunctionContext)
 #endif
 {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0)
+	struct recv_reorder_ctrl *preorder_ctrl = timer_container_of(preorder_ctrl, t, reordering_ctrl_timer);
+#else
 	struct recv_reorder_ctrl *preorder_ctrl = from_timer(preorder_ctrl, t, reordering_ctrl_timer);
+#endif
 #else
 	struct recv_reorder_ctrl *preorder_ctrl = (struct recv_reorder_ctrl *)FunctionContext;
 #endif

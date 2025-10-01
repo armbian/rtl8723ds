@@ -402,7 +402,11 @@ void pwr_state_check_handler(struct timer_list *t)
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0)
 	_adapter *padapter = (_adapter *)FunctionContext;
 #else
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0)
+	struct pwrctrl_priv *pwrpriv = timer_container_of(pwrpriv, t, pwr_state_check_timer);
+#else
 	struct pwrctrl_priv *pwrpriv = from_timer(pwrpriv, t, pwr_state_check_timer);
+#endif
 	_adapter *padapter = pwrpriv->padapter;
 #endif
 	rtw_ps_cmd(padapter);
@@ -1456,7 +1460,11 @@ static void pwr_rpwm_timeout_handler(struct timer_list *t)
 	PADAPTER padapter = (PADAPTER)FunctionContext;
 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
 #else
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0)
+	struct pwrctrl_priv *pwrpriv = timer_container_of(pwrpriv, t, pwr_rpwm_timer);
+#else
 	struct pwrctrl_priv *pwrpriv = from_timer(pwrpriv, t, pwr_rpwm_timer);
+#endif
 #endif
 	RTW_INFO("+%s: rpwm=0x%02X cpwm=0x%02X\n", __func__, pwrpriv->rpwm, pwrpriv->cpwm);
 
