@@ -826,7 +826,11 @@ void BlinkTimerCallback(void *data)
 #endif
 {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0)
+	PLED_SDIO        pLed = timer_container_of(pLed, t, BlinkTimer);
+#else
 	PLED_SDIO        pLed = from_timer(pLed, t, BlinkTimer);
+#endif
 #else
 	PLED_SDIO	 pLed = (PLED_SDIO)data;
 #endif

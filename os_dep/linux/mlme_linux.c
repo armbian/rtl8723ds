@@ -75,7 +75,11 @@ void rtw_join_timeout_handler(void *FunctionContext)
 #endif
 {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0)
+	_adapter *adapter = timer_container_of(adapter, t, mlmepriv.assoc_timer);
+#else
 	_adapter *adapter = from_timer(adapter, t, mlmepriv.assoc_timer);
+#endif
 #else
 	_adapter *adapter = (_adapter *)FunctionContext;
 #endif
@@ -90,7 +94,11 @@ void _rtw_scan_timeout_handler(void *FunctionContext)
 #endif
 {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0)
+	_adapter *adapter = timer_container_of(adapter, t, mlmepriv.scan_to_timer);
+#else
 	_adapter *adapter = from_timer(adapter, t, mlmepriv.scan_to_timer);
+#endif
 #else
 	_adapter *adapter = (_adapter *)FunctionContext;
 #endif
@@ -105,7 +113,11 @@ void _dynamic_check_timer_handlder(void *FunctionContext)
 #endif
 {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0)
+	struct dvobj_priv *pdvobj = timer_container_of(pdvobj, t, dynamic_chk_timer);
+#else
 	struct dvobj_priv *pdvobj = from_timer(pdvobj, t, dynamic_chk_timer);
+#endif
 #else
 	struct dvobj_priv *pdvobj = (struct dvobj_priv *)FunctionContext;
 #endif
@@ -132,7 +144,11 @@ void _rtw_set_scan_deny_timer_hdl(void *FunctionContext)
 #endif
 {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0)
+	_adapter *adapter = timer_container_of(adapter, t, mlmepriv.set_scan_deny_timer);
+#else
 	_adapter *adapter = from_timer(adapter, t, mlmepriv.set_scan_deny_timer);
+#endif
 #else
 	_adapter *adapter = (_adapter *)FunctionContext;
 #endif
@@ -350,7 +366,11 @@ void _survey_timer_hdl(void *FunctionContext)
 #endif
 {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0)
+	_adapter *padapter = timer_container_of(padapter, t, mlmeextpriv.survey_timer);
+#else
 	_adapter *padapter = from_timer(padapter, t, mlmeextpriv.survey_timer);
+#endif
 #else
 	_adapter *padapter = (_adapter *)FunctionContext;
 #endif
@@ -365,7 +385,11 @@ void _link_timer_hdl(void *FunctionContext)
 #endif
 {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0)
+	_adapter *padapter = timer_container_of(padapter, t, mlmeextpriv.link_timer);
+#else
 	_adapter *padapter = from_timer(padapter, t, mlmeextpriv.link_timer);
+#endif
 #else
 	_adapter *padapter = (_adapter *)FunctionContext;
 #endif
@@ -380,7 +404,11 @@ void _ft_link_timer_hdl(void *FunctionContext)
 #endif
 {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0)
+        _adapter *padapter = timer_container_of(padapter, t, mlmeextpriv.ft_link_timer);
+#else
         _adapter *padapter = from_timer(padapter, t, mlmeextpriv.ft_link_timer);
+#endif
 #else
 	_adapter *padapter = (_adapter *)FunctionContext;
 #endif
@@ -395,7 +423,11 @@ void _ft_roam_timer_hdl(void *FunctionContext)
 #endif
 {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0)
+        _adapter *padapter = timer_container_of(padapter, t, mlmeextpriv.ft_roam_timer);
+#else
         _adapter *padapter = from_timer(padapter, t, mlmeextpriv.ft_roam_timer);
+#endif
 #else
 	_adapter *padapter = (_adapter *)FunctionContext;
 #endif
@@ -411,7 +443,11 @@ void _addba_timer_hdl(void *FunctionContext)
 #endif
 {
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0)
+	struct sta_info *psta = timer_container_of(psta, t, addba_retry_timer);
+#else
 	struct sta_info *psta = from_timer(psta, t, addba_retry_timer);
+#endif
 #else
 	struct sta_info *psta = (struct sta_info *)FunctionContext;
 #endif
