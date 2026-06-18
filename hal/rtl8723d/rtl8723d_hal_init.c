@@ -2934,7 +2934,7 @@ static void rtl8723d_SetBeaconRelatedRegisters(PADAPTER padapter)
 	rtw_write8(padapter, bcn_ctrl_reg, val8);
 }
 
-void hal_notch_filter_8723d(_adapter *adapter, bool enable)
+static void hal_notch_filter_8723d(_adapter *adapter, bool enable)
 {
 	if (enable) {
 		RTW_INFO("Enable notch filter\n");
@@ -2945,7 +2945,7 @@ void hal_notch_filter_8723d(_adapter *adapter, bool enable)
 	}
 }
 
-u8 rtl8723d_MRateIdxToARFRId(PADAPTER padapter, u8 rate_idx)
+static u8 rtl8723d_MRateIdxToARFRId(PADAPTER padapter, u8 rate_idx)
 {
 	u8 ret = 0;
 	RT_RF_TYPE_DEF_E rftype = (RT_RF_TYPE_DEF_E)GET_RF_TYPE(padapter);
@@ -3007,7 +3007,7 @@ u8 rtl8723d_MRateIdxToARFRId(PADAPTER padapter, u8 rate_idx)
 	return ret;
 }
 
-void UpdateHalRAMask8723D(PADAPTER padapter, struct sta_info *psta, u32 mac_id, u8 rssi_level)
+static void UpdateHalRAMask8723D(PADAPTER padapter, struct sta_info *psta, u32 mac_id, u8 rssi_level)
 {
 	u32	mask, rate_bitmap = 0, ratr_bitmap_msb = 0;
 	u8	disable_cck_rate = FALSE, MimoPs_enable = FALSE;
@@ -3307,7 +3307,7 @@ s32 rtl8723d_InitLLTTable(PADAPTER padapter)
 }
 
 #if defined(CONFIG_USB_HCI) || defined(CONFIG_SDIO_HCI) || defined(CONFIG_GSPI_HCI)
-void _DisableGPIO(PADAPTER	padapter)
+static void _DisableGPIO(PADAPTER	padapter)
 {
 	/***************************************
 	j. GPIO_PIN_CTRL 0x44[31:0]=0x000
@@ -3343,7 +3343,7 @@ void _DisableGPIO(PADAPTER	padapter)
 
 } /* end of _DisableGPIO() */
 
-void _DisableRFAFEAndResetBB8723D(PADAPTER padapter)
+static void _DisableRFAFEAndResetBB8723D(PADAPTER padapter)
 {
 	/**************************************
 	a.	TXPAUSE 0x522[7:0] = 0xFF
@@ -3374,12 +3374,12 @@ void _DisableRFAFEAndResetBB8723D(PADAPTER padapter)
 
 }
 
-void _DisableRFAFEAndResetBB(PADAPTER padapter)
+static void _DisableRFAFEAndResetBB(PADAPTER padapter)
 {
 	_DisableRFAFEAndResetBB8723D(padapter);
 }
 
-void _ResetDigitalProcedure1_8723D(PADAPTER padapter, BOOLEAN bWithoutHWSM)
+static void _ResetDigitalProcedure1_8723D(PADAPTER padapter, BOOLEAN bWithoutHWSM)
 {
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 
@@ -3487,12 +3487,12 @@ void _ResetDigitalProcedure1_8723D(PADAPTER padapter, BOOLEAN bWithoutHWSM)
 
 }
 
-void _ResetDigitalProcedure1(PADAPTER padapter, BOOLEAN bWithoutHWSM)
+static void _ResetDigitalProcedure1(PADAPTER padapter, BOOLEAN bWithoutHWSM)
 {
 	_ResetDigitalProcedure1_8723D(padapter, bWithoutHWSM);
 }
 
-void _ResetDigitalProcedure2(PADAPTER padapter)
+static void _ResetDigitalProcedure2(PADAPTER padapter)
 {
 	/* HAL_DATA_TYPE		*pHalData	= GET_HAL_DATA(padapter);
 	*****************************
@@ -3506,7 +3506,7 @@ void _ResetDigitalProcedure2(PADAPTER padapter)
 	rtw_write8(padapter, REG_SYS_ISO_CTRL + 1, 0x82); /* modify to 0x82 by Scott. */
 }
 
-void _DisableAnalog(PADAPTER padapter, BOOLEAN bWithoutHWSM)
+static void _DisableAnalog(PADAPTER padapter, BOOLEAN bWithoutHWSM)
 {
 	HAL_DATA_TYPE	*pHalData	= GET_HAL_DATA(padapter);
 	u16 value16 = 0;
@@ -5162,7 +5162,7 @@ void CCX_FwC2HTxRpt_8723d(PADAPTER padapter, u8 *pdata, u8 len)
 #endif
 }
 
-s32 c2h_handler_8723d(_adapter *adapter, u8 id, u8 seq, u8 plen, u8 *payload)
+static s32 c2h_handler_8723d(_adapter *adapter, u8 id, u8 seq, u8 plen, u8 *payload)
 {
 	s32 ret = _SUCCESS;
 
@@ -5728,7 +5728,7 @@ struct bcn_qinfo_8723d {
 	u16 pkt_num:8;
 };
 
-void dump_qinfo_8723d(void *sel, struct qinfo_8723d *info, const char *tag)
+static void dump_qinfo_8723d(void *sel, struct qinfo_8723d *info, const char *tag)
 {
 	/* if (info->pkt_num) */
 	RTW_PRINT_SEL(sel, "%shead:0x%02x, tail:0x%02x, pkt_num:%u, macid:%u, ac:%u\n"
@@ -5736,14 +5736,14 @@ void dump_qinfo_8723d(void *sel, struct qinfo_8723d *info, const char *tag)
 		info->pkt_num, info->macid, info->ac);
 }
 
-void dump_bcn_qinfo_8723d(void *sel, struct bcn_qinfo_8723d *info, const char *tag)
+static void dump_bcn_qinfo_8723d(void *sel, struct bcn_qinfo_8723d *info, const char *tag)
 {
 	/* if (info->pkt_num) */
 	RTW_PRINT_SEL(sel, "%shead:0x%02x, pkt_num:%u\n"
 		      , tag ? tag : "", info->head, info->pkt_num);
 }
 
-void dump_mac_qinfo_8723d(void *sel, _adapter *adapter)
+static void dump_mac_qinfo_8723d(void *sel, _adapter *adapter)
 {
 	u32 q0_info;
 	u32 q1_info;
@@ -5896,7 +5896,7 @@ u8 SetHalDefVar8723D(PADAPTER padapter, HAL_DEF_VARIABLE variable, void *pval)
 	return bResult;
 }
 
-void hal_ra_info_dump(_adapter *padapter , void *sel)
+static void hal_ra_info_dump(_adapter *padapter , void *sel)
 {
 	int i;
 	u8 mac_id;

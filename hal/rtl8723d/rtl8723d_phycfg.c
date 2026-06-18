@@ -802,7 +802,7 @@ PHY_SetTxPowerIndex_8723D(
 	}
 }
 
-u8
+static u8
 phy_GetCurrentTxNum_8723D(
 	IN	PADAPTER		pAdapter
 )
@@ -890,7 +890,7 @@ PHY_GetTxPowerLevel8723D(
 
 
 /* <20160217, Jessica> A workaround to eliminate the 2472MHz & 2484MHz spur of 8723D. */
-VOID
+static VOID
 phy_SpurCalibration_8723D(
 	IN	PADAPTER					pAdapter,
 	IN	u1Byte						ToChannel,
@@ -978,7 +978,7 @@ phy_SpurCalibration_8723D(
 	ODM_SetBBReg(pDM_Odm, 0xD2C, BIT(28), 0x0);                    /* disable CSI mask */
 }
 
-VOID
+static VOID
 phy_SetRegBW_8723D(
 	IN	PADAPTER		Adapter,
 	CHANNEL_WIDTH	CurrentBW
@@ -1009,7 +1009,7 @@ phy_SetRegBW_8723D(
 	}
 }
 
-u8
+static u8
 phy_GetSecondaryChnl_8723D(
 	IN	PADAPTER	Adapter
 )
@@ -1045,7 +1045,7 @@ phy_GetSecondaryChnl_8723D(
 	return (SCSettingOf40 << 4) | SCSettingOf20;
 }
 
-void
+static void
 phy_PostSetBwMode8723D(
 	IN PADAPTER padapter
 )
@@ -1099,7 +1099,7 @@ phy_PostSetBwMode8723D(
 	PHY_RF6052SetBandwidth8723D(padapter, pHalData->CurrentChannelBW);
 }
 
-VOID
+static VOID
 phy_SwChnl8723D(
 	IN	PADAPTER					pAdapter
 )
@@ -1144,7 +1144,7 @@ phy_SwChnl8723D(
 	RTW_INFO("===>phy_SwChnl8723D: Channel = %d\n", channelToSW);
 }
 
-VOID
+static VOID
 phy_SwChnlAndSetBwMode8723D(
 	IN  PADAPTER		Adapter
 )
@@ -1176,7 +1176,7 @@ phy_SwChnlAndSetBwMode8723D(
 	PHY_SetTxPowerLevel8723D(Adapter, pHalData->CurrentChannel);
 }
 
-VOID
+static VOID
 PHY_HandleSwChnlAndSetBW8723D(
 	IN	PADAPTER			Adapter,
 	IN	BOOLEAN				bSwitchChannel,
