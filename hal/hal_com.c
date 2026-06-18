@@ -2607,7 +2607,7 @@ void rtw_hal_set_bssid(_adapter *adapter, u8 *val)
 	RTW_INFO("%s "ADPT_FMT"- hw port -%d BSSID: "MAC_FMT"\n", __func__, ADPT_ARG(adapter), adapter->hw_port, MAC_ARG(val));
 }
 
-void rtw_hal_get_msr(_adapter *adapter, u8 *net_type)
+static void rtw_hal_get_msr(_adapter *adapter, u8 *net_type)
 {
 	switch (adapter->hw_port) {
 	case HW_PORT0:
@@ -2691,7 +2691,7 @@ void rtw_hal_set_msr(_adapter *adapter, u8 net_type)
 	}
 }
 
-void rtw_hal_port_reconfig(_adapter *adapter, u8 port)
+static void rtw_hal_port_reconfig(_adapter *adapter, u8 port)
 {
 #ifdef CONFIG_CONCURRENT_MODE
 	u8 hal_port_num = 0;
@@ -3043,7 +3043,7 @@ inline s32 rtw_hal_set_FwMediaStatusRpt_range_cmd(_adapter *adapter, bool opmode
 	return rtw_hal_set_FwMediaStatusRpt_cmd(adapter, opmode, miracast, miracast_sink, role, macid, 1, macid_end);
 }
 
-void rtw_hal_set_FwRsvdPage_cmd(PADAPTER padapter, PRSVDPAGE_LOC rsvdpageloc)
+static void rtw_hal_set_FwRsvdPage_cmd(PADAPTER padapter, PRSVDPAGE_LOC rsvdpageloc)
 {
 	struct	hal_ops *pHalFunc = &padapter->HalFunc;
 	u8	u1H2CRsvdPageParm[H2C_RSVDPAGE_LOC_LEN] = {0};
@@ -3139,7 +3139,7 @@ void rtw_hal_set_output_gpio(_adapter *padapter, u8 index, u8 outputval)
 }
 #endif
 
-void rtw_hal_set_FwAoacRsvdPage_cmd(PADAPTER padapter, PRSVDPAGE_LOC rsvdpageloc)
+static void rtw_hal_set_FwAoacRsvdPage_cmd(PADAPTER padapter, PRSVDPAGE_LOC rsvdpageloc)
 {
 	struct	hal_ops *pHalFunc = &padapter->HalFunc;
 	struct	pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
@@ -5944,7 +5944,7 @@ void rtw_hal_construct_NullFunctionData(
 	*pLength = pktlen;
 }
 
-void rtw_hal_construct_ProbeRsp(_adapter *padapter, u8 *pframe, u32 *pLength,
+static void rtw_hal_construct_ProbeRsp(_adapter *padapter, u8 *pframe, u32 *pLength,
 				u8 *StaAddr, BOOLEAN bHideSSID)
 {
 	struct rtw_ieee80211_hdr	*pwlanhdr;
