@@ -22,6 +22,7 @@
 #include <drv_types.h>
 #include <hal_btcoex.h>
 #include <hal_data.h>
+#include "rtw_btcoex.h"
 
 
 void rtw_btcoex_Initialize(PADAPTER padapter)

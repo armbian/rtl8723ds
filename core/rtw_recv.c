@@ -2658,7 +2658,7 @@ union recv_frame *recvframe_chk_defrag(PADAPTER padapter, union recv_frame *prec
 
 }
 
-int amsdu_to_msdu(_adapter *padapter, union recv_frame *prframe)
+static int amsdu_to_msdu(_adapter *padapter, union recv_frame *prframe)
 {
 	int	a_len, padding_len;
 	u16	nSubframe_Length;
@@ -3833,7 +3833,7 @@ static sint fill_radiotap_hdr(_adapter *padapter, union recv_frame *precvframe, 
 
 }
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 24))
-int recv_frame_monitor(_adapter *padapter, union recv_frame *rframe)
+static int recv_frame_monitor(_adapter *padapter, union recv_frame *rframe)
 {
 	int ret = _SUCCESS;
 	struct rx_pkt_attrib *pattrib = &rframe->u.hdr.attrib;
@@ -3880,7 +3880,7 @@ exit:
 	return ret;
 }
 #endif
-int recv_func_prehandle(_adapter *padapter, union recv_frame *rframe)
+static int recv_func_prehandle(_adapter *padapter, union recv_frame *rframe)
 {
 	int ret = _SUCCESS;
 	struct rx_pkt_attrib *pattrib = &rframe->u.hdr.attrib;
@@ -3916,7 +3916,7 @@ exit:
 }
 
 /*#define DBG_RX_BMC_FRAME*/
-int recv_func_posthandle(_adapter *padapter, union recv_frame *prframe)
+static int recv_func_posthandle(_adapter *padapter, union recv_frame *prframe)
 {
 	int ret = _SUCCESS;
 	union recv_frame *orig_prframe = prframe;
@@ -4392,7 +4392,7 @@ static void rx_process_link_qual(_adapter *padapter, union recv_frame *prframe)
 #endif /* CONFIG_NEW_SIGNAL_STAT_PROCESS */
 }
 
-void rx_process_phy_info(_adapter *padapter, union recv_frame *rframe)
+static void rx_process_phy_info(_adapter *padapter, union recv_frame *rframe)
 {
 	/* Check RSSI */
 	rx_process_rssi(padapter, rframe);

@@ -471,7 +471,7 @@ void rtw_get_adapter_tx_rate_bmp_by_bw(_adapter *adapter, u8 bw, u16 *r_bmp_cck_
 		*r_bmp_vht = bmp_vht;
 }
 
-void rtw_get_shared_macid_tx_rate_bmp_by_bw(struct dvobj_priv *dvobj, u8 bw, u16 *r_bmp_cck_ofdm, u32 *r_bmp_ht, u32 *r_bmp_vht)
+static void rtw_get_shared_macid_tx_rate_bmp_by_bw(struct dvobj_priv *dvobj, u8 bw, u16 *r_bmp_cck_ofdm, u32 *r_bmp_ht, u32 *r_bmp_vht)
 {
 	struct macid_ctl_t *macid_ctl = dvobj_to_macidctl(dvobj);
 	u16 bmp_cck_ofdm = 0;
@@ -2943,7 +2943,7 @@ s32 rtw_free_xmitbuf(struct xmit_priv *pxmitpriv, struct xmit_buf *pxmitbuf)
 	return _SUCCESS;
 }
 
-void rtw_init_xmitframe(struct xmit_frame *pxframe)
+static void rtw_init_xmitframe(struct xmit_frame *pxframe)
 {
 	if (pxframe !=  NULL) { /* default value setting */
 		pxframe->buf_addr = NULL;
@@ -3549,7 +3549,7 @@ void rtw_init_hwxmits(struct hw_xmit *phwxmit, sint entry)
 }
 
 #ifdef CONFIG_BR_EXT
-int rtw_br_client_tx(_adapter *padapter, struct sk_buff **pskb)
+static int rtw_br_client_tx(_adapter *padapter, struct sk_buff **pskb)
 {
 	struct sk_buff *skb = *pskb;
 	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
@@ -4983,7 +4983,7 @@ int rtw_sctx_wait(struct submit_ctx *sctx, const char *msg)
 	return ret;
 }
 
-bool rtw_sctx_chk_waring_status(int status)
+static bool rtw_sctx_chk_waring_status(int status)
 {
 	switch (status) {
 	case RTW_SCTX_DONE_UNKNOWN:

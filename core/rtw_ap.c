@@ -1977,7 +1977,7 @@ int rtw_check_beacon_data(_adapter *padapter, u8 *pbuf,  int len)
 }
 
 #if CONFIG_RTW_MACADDR_ACL
-void rtw_macaddr_acl_init(_adapter *adapter)
+static void rtw_macaddr_acl_init(_adapter *adapter)
 {
 	struct sta_priv *stapriv = &adapter->stapriv;
 	struct wlan_acl_pool *acl = &stapriv->acl_list;
@@ -1996,7 +1996,7 @@ void rtw_macaddr_acl_init(_adapter *adapter)
 	_exit_critical_bh(&(acl_node_q->lock), &irqL);
 }
 
-void rtw_macaddr_acl_deinit(_adapter *adapter)
+static void rtw_macaddr_acl_deinit(_adapter *adapter)
 {
 	struct sta_priv *stapriv = &adapter->stapriv;
 	struct wlan_acl_pool *acl = &stapriv->acl_list;
@@ -2272,7 +2272,7 @@ int rtw_ap_set_wep_key(_adapter *padapter, u8 *key, u8 keylen, int keyid, u8 set
 	return rtw_ap_set_key(padapter, key, alg, keyid, set_tx);
 }
 
-u8 rtw_ap_bmc_frames_hdl(_adapter *padapter)
+static u8 rtw_ap_bmc_frames_hdl(_adapter *padapter)
 {
 #define HIQ_XMIT_COUNTS (6)
 	_irqL irqL;

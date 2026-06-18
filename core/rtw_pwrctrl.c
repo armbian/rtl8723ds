@@ -179,7 +179,7 @@ int ips_leave(_adapter *padapter)
 	int rtw_hw_resume(_adapter *padapter);
 #endif
 
-bool rtw_pwr_unassociated_idle(_adapter *adapter)
+static bool rtw_pwr_unassociated_idle(_adapter *adapter)
 {
 	u8 i;
 	_adapter *iface;
@@ -396,7 +396,7 @@ exit:
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0)
 void pwr_state_check_handler(RTW_TIMER_HDL_ARGS)
 #else
-void pwr_state_check_handler(struct timer_list *t)
+static void pwr_state_check_handler(struct timer_list *t)
 #endif
 {
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0)
@@ -595,7 +595,7 @@ void rtw_set_rpwm(PADAPTER padapter, u8 pslv)
 
 }
 
-u8 PS_RDY_CHECK(_adapter *padapter)
+static u8 PS_RDY_CHECK(_adapter *padapter)
 {
 	u32 curr_time, delta_time;
 	struct pwrctrl_priv	*pwrpriv = adapter_to_pwrctl(padapter);
