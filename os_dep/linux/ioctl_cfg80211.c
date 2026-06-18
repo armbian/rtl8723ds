@@ -189,35 +189,35 @@ static struct ieee80211_channel rtw_5ghz_a_channels[] = {
 };
 
 
-void rtw_2g_channels_init(struct ieee80211_channel *channels)
+static void rtw_2g_channels_init(struct ieee80211_channel *channels)
 {
 	_rtw_memcpy((void *)channels, (void *)rtw_2ghz_channels,
 		sizeof(struct ieee80211_channel) * RTW_2G_CHANNELS_NUM
 	);
 }
 
-void rtw_5g_channels_init(struct ieee80211_channel *channels)
+static void rtw_5g_channels_init(struct ieee80211_channel *channels)
 {
 	_rtw_memcpy((void *)channels, (void *)rtw_5ghz_a_channels,
 		sizeof(struct ieee80211_channel) * RTW_5G_CHANNELS_NUM
 	);
 }
 
-void rtw_2g_rates_init(struct ieee80211_rate *rates)
+static void rtw_2g_rates_init(struct ieee80211_rate *rates)
 {
 	_rtw_memcpy(rates, rtw_g_rates,
 		sizeof(struct ieee80211_rate) * RTW_G_RATES_NUM
 	);
 }
 
-void rtw_5g_rates_init(struct ieee80211_rate *rates)
+static void rtw_5g_rates_init(struct ieee80211_rate *rates)
 {
 	_rtw_memcpy(rates, rtw_a_rates,
 		sizeof(struct ieee80211_rate) * RTW_A_RATES_NUM
 	);
 }
 
-struct ieee80211_supported_band *rtw_spt_band_alloc(
+static struct ieee80211_supported_band *rtw_spt_band_alloc(
 	enum ieee80211_band band
 )
 {
@@ -262,7 +262,7 @@ exit:
 	return spt_band;
 }
 
-void rtw_spt_band_free(struct ieee80211_supported_band *spt_band)
+static void rtw_spt_band_free(struct ieee80211_supported_band *spt_band)
 {
 	u32 size = 0;
 
@@ -2038,7 +2038,7 @@ void rtw_cfg80211_unlink_bss(_adapter *padapter, struct wlan_network *pnetwork)
 }
 
 /* if target wps scan ongoing, target_ssid is filled */
-int rtw_cfg80211_is_target_wps_scan(struct cfg80211_scan_request *scan_req, struct cfg80211_ssid *target_ssid)
+static int rtw_cfg80211_is_target_wps_scan(struct cfg80211_scan_request *scan_req, struct cfg80211_ssid *target_ssid)
 {
 	int ret = 0;
 
