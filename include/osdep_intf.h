@@ -134,4 +134,13 @@ int	rtw_gw_addr_query(_adapter *padapter);
 int rtw_suspend_common(_adapter *padapter);
 int rtw_resume_common(_adapter *padapter);
 
+
+/* -Wmissing-prototypes: cross-file declarations */
+int pm_netdev_close(struct net_device *pnetdev, u8 bnormal);
+int pm_netdev_open(struct net_device *pnetdev, u8 bnormal);
+void netdev_br_init(struct net_device *netdev);
+int rtw_resume_process(_adapter *padapter);
+void sdio_free_irq(struct dvobj_priv *dvobj);
+int sdio_alloc_irq(struct dvobj_priv *dvobj);
+
 #endif /* _OSDEP_INTF_H_ */

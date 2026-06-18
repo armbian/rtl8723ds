@@ -29,4 +29,10 @@ extern void rtw_report_sec_ie(_adapter *adapter, u8 authmode, u8 *sec_ie);
 
 void rtw_reset_securitypriv(_adapter *adapter);
 
+
+/* -Wmissing-prototypes: cross-file declarations */
+void rtw_indicate_wx_disassoc_event(_adapter *padapter);
+void rtw_indicate_wx_assoc_event(_adapter *padapter);
+void indicate_wx_scan_complete_event(_adapter *padapter);
+
 #endif /* _MLME_OSDEP_H_ */
