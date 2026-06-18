@@ -61,7 +61,7 @@ static u8 CardEnable(PADAPTER padapter)
 }
 
 /* static */
-u32 _InitPowerOn_8723DS(PADAPTER padapter)
+static u32 _InitPowerOn_8723DS(PADAPTER padapter)
 {
 	u8 value8;
 	u16 value16;
@@ -451,12 +451,12 @@ static void _InitTransferPageSize(PADAPTER padapter)
 	rtw_write8(padapter, REG_PBP, value8);
 }
 
-void _InitDriverInfoSize(PADAPTER padapter, u8 drvInfoSize)
+static void _InitDriverInfoSize(PADAPTER padapter, u8 drvInfoSize)
 {
 	rtw_write8(padapter, REG_RX_DRVINFO_SZ, drvInfoSize);
 }
 
-void _InitNetworkType(PADAPTER padapter)
+static void _InitNetworkType(PADAPTER padapter)
 {
 	u32 value32;
 
@@ -469,7 +469,7 @@ void _InitNetworkType(PADAPTER padapter)
 	rtw_write32(padapter, REG_CR, value32);
 }
 
-void _InitWMACSetting(PADAPTER padapter)
+static void _InitWMACSetting(PADAPTER padapter)
 {
 	PHAL_DATA_TYPE pHalData;
 	u16 value16;
@@ -507,7 +507,7 @@ void _InitWMACSetting(PADAPTER padapter)
 	rtw_write16(padapter, REG_RXFLTMAP0, value16);
 }
 
-void _InitAdaptiveCtrl(PADAPTER padapter)
+static void _InitAdaptiveCtrl(PADAPTER padapter)
 {
 	u16	value16;
 	u32	value32;
@@ -530,7 +530,7 @@ void _InitAdaptiveCtrl(PADAPTER padapter)
 	rtw_write16(padapter, REG_RL, value16);
 }
 
-void _InitEDCA(PADAPTER padapter)
+static void _InitEDCA(PADAPTER padapter)
 {
 	/* Set Spec SIFS (used in NAV) */
 	rtw_write16(padapter, REG_SPEC_SIFS, 0x100a);
@@ -549,7 +549,7 @@ void _InitEDCA(PADAPTER padapter)
 	rtw_write32(padapter, REG_EDCA_VO_PARAM, 0x002FA226);
 }
 
-void _InitRateFallback(PADAPTER padapter)
+static void _InitRateFallback(PADAPTER padapter)
 {
 	/* Set Data Auto Rate Fallback Retry Count register. */
 	rtw_write32(padapter, REG_DARFRC, 0x00000000);
@@ -559,7 +559,7 @@ void _InitRateFallback(PADAPTER padapter)
 
 }
 
-void _InitRetryFunction(PADAPTER padapter)
+static void _InitRetryFunction(PADAPTER padapter)
 {
 	u8	value8;
 
@@ -594,7 +594,7 @@ static void HalRxAggr8723DSdio(PADAPTER padapter)
 
 }
 
-void sdio_AggSettingRxUpdate(PADAPTER padapter)
+static void sdio_AggSettingRxUpdate(PADAPTER padapter)
 {
 	HAL_DATA_TYPE *pHalData;
 	u8 val8;
@@ -619,7 +619,7 @@ void sdio_AggSettingRxUpdate(PADAPTER padapter)
 	rtw_write8(padapter, REG_RXDMA_MODE_CTRL_8723D, valueRxAggCtrl);/* RxAggLowThresh = 4*1K */
 }
 
-void _initSdioAggregationSetting(PADAPTER padapter)
+static void _initSdioAggregationSetting(PADAPTER padapter)
 {
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(padapter);
 
@@ -656,7 +656,7 @@ static void _RXAggrSwitch(PADAPTER padapter, u8 enable)
 	rtw_write8(padapter, REG_RXDMA_MODE_CTRL_8723D, valueRxAggCtrl);
 }
 
-void _InitOperationMode(PADAPTER padapter)
+static void _InitOperationMode(PADAPTER padapter)
 {
 	PHAL_DATA_TYPE pHalData;
 	struct mlme_ext_priv *pmlmeext;
@@ -729,7 +729,7 @@ void _InitOperationMode(PADAPTER padapter)
 
 }
 
-void _InitInterrupt(PADAPTER padapter)
+static void _InitInterrupt(PADAPTER padapter)
 {
 	/* HISR - turn all off */
 	rtw_write32(padapter, REG_HISR, 0);
@@ -748,7 +748,7 @@ void _InitInterrupt(PADAPTER padapter)
 	InitSysInterrupt8723DSdio(padapter);
 }
 
-void _InitRDGSetting(PADAPTER padapter)
+static void _InitRDGSetting(PADAPTER padapter)
 {
 	rtw_write8(padapter, REG_RD_CTRL, 0xFF);
 	rtw_write16(padapter, REG_RD_NAV_NXT, 0x200);
@@ -818,7 +818,7 @@ static void _InitPABias(PADAPTER padapter)
 	}
 }
 
-VOID _InitBBRegBackup_8723DS(PADAPTER	Adapter)
+static VOID _InitBBRegBackup_8723DS(PADAPTER	Adapter)
 {
 	HAL_DATA_TYPE	*pHalData = GET_HAL_DATA(Adapter);
 	u8	i;
@@ -1667,7 +1667,7 @@ static void ReadAdapterInfo8723DS(PADAPTER padapter)
  * If variable not handled here,
  * some variables will be processed in SetHwReg8723D()
  */
-void SetHwReg8723DS(PADAPTER padapter, u8 variable, u8 *val)
+static void SetHwReg8723DS(PADAPTER padapter, u8 variable, u8 *val)
 {
 	PHAL_DATA_TYPE pHalData;
 	u8 val8;
@@ -1763,7 +1763,7 @@ void SetHwReg8723DS(PADAPTER padapter, u8 variable, u8 *val)
  * If variable not handled here,
  * some variables will be processed in GetHwReg8723D()
  */
-void GetHwReg8723DS(PADAPTER padapter, u8 variable, u8 *val)
+static void GetHwReg8723DS(PADAPTER padapter, u8 variable, u8 *val)
 {
 	PHAL_DATA_TYPE pHalData = GET_HAL_DATA(padapter);
 
@@ -1789,7 +1789,7 @@ void GetHwReg8723DS(PADAPTER padapter, u8 variable, u8 *val)
  *	Description:
  *		Query setting of specified variable.
  *   */
-u8
+static u8
 GetHalDefVar8723DSDIO(
 	IN	PADAPTER				Adapter,
 	IN	HAL_DEF_VARIABLE		eVariable,
@@ -1829,7 +1829,7 @@ GetHalDefVar8723DSDIO(
  *	Description:
  *		Change default setting of specified variable.
  *   */
-u8
+static u8
 SetHalDefVar8723DSDIO(
 	IN	PADAPTER				Adapter,
 	IN	HAL_DEF_VARIABLE		eVariable,
