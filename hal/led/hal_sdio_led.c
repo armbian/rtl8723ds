@@ -26,7 +26,7 @@
  *		Implementation of LED blinking behavior.
  *		It toggle off LED and schedule corresponding timer if necessary.
  *   */
-void
+static void
 SwLedBlink(
 	PLED_SDIO			pLed
 )
@@ -112,7 +112,7 @@ SwLedBlink(
 	}
 }
 
-void
+static void
 SwLedBlink1(
 	PLED_SDIO			pLed
 )
@@ -285,7 +285,7 @@ SwLedBlink1(
 
 }
 
-void
+static void
 SwLedBlink2(
 	PLED_SDIO			pLed
 )
@@ -371,7 +371,7 @@ SwLedBlink2(
 
 }
 
-void
+static void
 SwLedBlink3(
 	PLED_SDIO			pLed
 )
@@ -497,7 +497,7 @@ SwLedBlink3(
 }
 
 
-void
+static void
 SwLedBlink4(
 	PLED_SDIO			pLed
 )
@@ -651,7 +651,7 @@ SwLedBlink4(
 
 }
 
-void
+static void
 SwLedBlink5(
 	PLED_SDIO			pLed
 )
@@ -741,7 +741,7 @@ SwLedBlink5(
 
 }
 
-void
+static void
 SwLedBlink6(
 	PLED_SDIO			pLed
 )
@@ -820,7 +820,7 @@ void BlinkHandler(PLED_SDIO	pLed)
  *		it just schedules to corresponding BlinkWorkItem/led_blink_hdl
  *   */
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
-void BlinkTimerCallback(struct timer_list *t)
+static void BlinkTimerCallback(struct timer_list *t)
 #else
 void BlinkTimerCallback(void *data)
 #endif

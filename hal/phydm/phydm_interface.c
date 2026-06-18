@@ -620,7 +620,7 @@ ODM_ReleaseTimer(
 }
 
 
-u1Byte
+static u1Byte
 phydm_trans_h2c_id(
 	IN	PDM_ODM_T	pDM_Odm,
 	IN	u1Byte		phydm_h2c_id

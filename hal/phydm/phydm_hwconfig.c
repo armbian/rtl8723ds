@@ -64,7 +64,7 @@
 #define GET_VERSION(ic, txt) GET_VERSION_MP(ic, txt)
 #endif
 
-u1Byte
+static u1Byte
 odm_QueryRxPwrPercentage(
 	IN		s1Byte		AntPower
 	)
@@ -82,7 +82,7 @@ odm_QueryRxPwrPercentage(
 // 2012/01/12 MH MOve some signal strength smooth method to MP HAL layer.
 // IF other SW team do not support the feature, remove this section.??
 //
-s4Byte
+static s4Byte
 odm_SignalScaleMapping_92CSeries_patch_RT_CID_819x_Lenovo(	
 	IN OUT PDM_ODM_T pDM_Odm,
 	s4Byte CurrSig 
@@ -120,7 +120,7 @@ odm_SignalScaleMapping_92CSeries_patch_RT_CID_819x_Lenovo(
 	return RetSig;
 }
 
-s4Byte
+static s4Byte
 odm_SignalScaleMapping_92CSeries_patch_RT_CID_819x_Netcore(	
 	IN OUT PDM_ODM_T pDM_Odm,
 	s4Byte CurrSig 
@@ -159,7 +159,7 @@ odm_SignalScaleMapping_92CSeries_patch_RT_CID_819x_Netcore(
 }
 
 
-s4Byte
+static s4Byte
 odm_SignalScaleMapping_92CSeries(	
 	IN OUT PDM_ODM_T pDM_Odm,
 	IN s4Byte CurrSig 
@@ -538,7 +538,7 @@ odm_Cfo(
 	return ret_val;
 }
 
-u1Byte
+static u1Byte
 phydm_rate_to_num_ss(
 	IN OUT	PDM_ODM_T		pDM_Odm,
 	IN		u1Byte			DataRate
@@ -677,7 +677,7 @@ odm_CCKRSSI_8188E(
 }
 #endif
 
-VOID
+static VOID
 odm_RxPhyStatus92CSeries_Parsing(
 	IN OUT	PDM_ODM_T					pDM_Odm,
 	OUT		PODM_PHY_INFO_T			pPhyInfo,		
@@ -1501,7 +1501,7 @@ odm_Init_RSSIForDM(
 
 }
 
-VOID
+static VOID
 odm_Process_RSSIForDM(	
 	IN OUT	PDM_ODM_T					pDM_Odm,
 	OUT		PODM_PHY_INFO_T			pPhyInfo,
@@ -1827,7 +1827,7 @@ odm_Process_RSSIForDM(
 //
 // Endianness before calling this API
 //
-VOID
+static VOID
 ODM_PhyStatusQuery_92CSeries(
 	IN OUT	PDM_ODM_T					pDM_Odm,
 	OUT		PODM_PHY_INFO_T				pPhyInfo,
@@ -2979,7 +2979,7 @@ ODM_GetHWImgVersion(
 /* For 8822B only!! need to move to FW finally */
 /*==============================================*/
 
-VOID
+static VOID
 phydm_ResetPhyInfo(
 	IN		PDM_ODM_T					pPhydm,
 	OUT		PODM_PHY_INFO_T			pPhyInfo
@@ -3010,7 +3010,7 @@ phydm_ResetPhyInfo(
 #endif
 }
 
-VOID
+static VOID
 phydm_SetPerPathPhyInfo(
 	IN		u1Byte							RxPath,
 	IN		s1Byte							RxPwr,
@@ -3062,7 +3062,7 @@ phydm_SetPerPathPhyInfo(
 */
 }
 
-VOID
+static VOID
 phydm_SetCommonPhyInfo(
 	IN		s1Byte							RxPower,
 	IN		u1Byte							channel,
@@ -3097,7 +3097,7 @@ phydm_SetCommonPhyInfo(
 */
 }
 
-VOID
+static VOID
 phydm_GetRxPhyStatusType0(
 	IN		PDM_ODM_T						pDM_Odm,
 	IN		pu1Byte							pPhyStatus,
@@ -3190,7 +3190,7 @@ phydm_GetRxPhyStatusType0(
 */
 }
 
-VOID
+static VOID
 phydm_GetRxPhyStatusType1(
 	IN		PDM_ODM_T						pDM_Odm,
 	IN		pu1Byte							pPhyStatus,
@@ -3311,7 +3311,7 @@ phydm_GetRxPhyStatusType1(
 */
 }
 
-VOID
+static VOID
 phydm_GetRxPhyStatusType2(
 	IN		PDM_ODM_T						pDM_Odm,
 	IN		pu1Byte							pPhyStatus,
@@ -3417,7 +3417,7 @@ phydm_GetRxPhyStatusType2(
 */
 }
 
-VOID
+static VOID
 phydm_GetRxPhyStatusType5(
 	IN		pu1Byte				pPhyStatus
 )
@@ -3433,7 +3433,7 @@ phydm_GetRxPhyStatusType5(
 */
 }
 
-VOID
+static VOID
 phydm_Process_RSSIForDMNewType(	
 	IN OUT	PDM_ODM_T					pDM_Odm,
 	IN		PODM_PHY_INFO_T			pPhyInfo,
