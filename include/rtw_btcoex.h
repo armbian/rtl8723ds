@@ -442,4 +442,10 @@ void rtw_btcoex_rx_ampdu_apply(PADAPTER);
 void rtw_btcoex_LPS_Enter(PADAPTER);
 void rtw_btcoex_LPS_Leave(PADAPTER);
 
+
+/* -Wmissing-prototypes: cross-file declarations */
+void rtw_btcoex_SetHciVersion(PADAPTER padapter, u16 hciVersion);
+void rtw_btcoex_SetBtPatchVersion(PADAPTER padapter, u16 btHciVer, u16 btPatchVer);
+void rtw_btcoex_StackUpdateProfileInfo(void);
+
 #endif /* __RTW_BTCOEX_H__ */
