@@ -860,7 +860,7 @@ void rtw_os_read_port(_adapter *padapter, struct recv_buf *precvbuf)
 
 }
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
-void _rtw_reordering_ctrl_timeout_handler(struct timer_list *t)
+static void _rtw_reordering_ctrl_timeout_handler(struct timer_list *t)
 #else
 void _rtw_reordering_ctrl_timeout_handler(void *FunctionContext)
 #endif

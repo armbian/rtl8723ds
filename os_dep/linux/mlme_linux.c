@@ -138,7 +138,7 @@ void _dynamic_check_timer_handlder(void *FunctionContext)
 
 #ifdef CONFIG_SET_SCAN_DENY_TIMER
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
-void _rtw_set_scan_deny_timer_hdl(struct timer_list *t)
+static void _rtw_set_scan_deny_timer_hdl(struct timer_list *t)
 #else
 void _rtw_set_scan_deny_timer_hdl(void *FunctionContext)
 #endif
@@ -360,7 +360,7 @@ void rtw_report_sec_ie(_adapter *adapter, u8 authmode, u8 *sec_ie)
 }
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
-void _survey_timer_hdl(struct timer_list *t)
+static void _survey_timer_hdl(struct timer_list *t)
 #else
 void _survey_timer_hdl(void *FunctionContext)
 #endif
@@ -379,7 +379,7 @@ void _survey_timer_hdl(void *FunctionContext)
 }
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
-void _link_timer_hdl(struct timer_list *t)
+static void _link_timer_hdl(struct timer_list *t)
 #else
 void _link_timer_hdl(void *FunctionContext)
 #endif
@@ -437,7 +437,7 @@ void _ft_roam_timer_hdl(void *FunctionContext)
 #endif
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
-void _addba_timer_hdl(struct timer_list *t)
+static void _addba_timer_hdl(struct timer_list *t)
 #else
 void _addba_timer_hdl(void *FunctionContext)
 #endif
