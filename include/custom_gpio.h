@@ -1,5 +1,5 @@
 #ifndef __CUSTOM_GPIO_H__
-#define __CUSTOM_GPIO_H___
+#define __CUSTOM_GPIO_H__
 
 #include <drv_conf.h>
 #include <osdep_service.h>
