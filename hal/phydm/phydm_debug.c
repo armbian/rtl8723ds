@@ -2662,11 +2662,7 @@ phydm_fw_trace_handler(
 		return;
 	}
 
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0))
-	strscpy((char *)&(pDM_Odm->fw_debug_trace[pDM_Odm->c2h_cmd_start]), (char *)&CmdBuf[1], (CmdLen-1));
-#else
-	strncpy((char *)&(pDM_Odm->fw_debug_trace[pDM_Odm->c2h_cmd_start]), (char *)&CmdBuf[1], (CmdLen-1));
-#endif
+	memcpy((char *)&(pDM_Odm->fw_debug_trace[pDM_Odm->c2h_cmd_start]), (char *)&CmdBuf[1], (CmdLen-1));
 	pDM_Odm->c2h_cmd_start += (CmdLen - 1);
 	pDM_Odm->fw_buff_is_enpty = FALSE;	
 	
