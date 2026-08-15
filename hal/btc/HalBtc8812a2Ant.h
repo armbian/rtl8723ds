@@ -182,21 +182,21 @@ void ex_halbtc8812a2ant_dbg_control(IN struct btc_coexist *btcoexist,
 				    IN u8 op_code, IN u8 op_len, IN u8 *pdata);
 
 #else
-#define	ex_halbtc8812a2ant_power_on_setting(btcoexist)
-#define	ex_halbtc8812a2ant_init_hw_config(btcoexist, wifi_only)
-#define	ex_halbtc8812a2ant_init_coex_dm(btcoexist)
-#define	ex_halbtc8812a2ant_ips_notify(btcoexist, type)
-#define	ex_halbtc8812a2ant_lps_notify(btcoexist, type)
-#define	ex_halbtc8812a2ant_scan_notify(btcoexist, type)
-#define	ex_halbtc8812a2ant_connect_notify(btcoexist, type)
-#define	ex_halbtc8812a2ant_media_status_notify(btcoexist, type)
-#define	ex_halbtc8812a2ant_specific_packet_notify(btcoexist, type)
-#define	ex_halbtc8812a2ant_bt_info_notify(btcoexist, tmp_buf, length)
-#define	ex_halbtc8812a2ant_rf_status_notify(btcoexist, type)
-#define	ex_halbtc8812a2ant_halt_notify(btcoexist)
-#define	ex_halbtc8812a2ant_periodical(btcoexist)
-#define	ex_halbtc8812a2ant_display_coex_info(btcoexist)
-#define	ex_halbtc8812a2ant_dbg_control(btcoexist, op_code, op_len, pdata)
+#define	ex_halbtc8812a2ant_power_on_setting(btcoexist) do {} while (0)
+#define	ex_halbtc8812a2ant_init_hw_config(btcoexist, wifi_only) do {} while (0)
+#define	ex_halbtc8812a2ant_init_coex_dm(btcoexist) do {} while (0)
+#define	ex_halbtc8812a2ant_ips_notify(btcoexist, type) do {} while (0)
+#define	ex_halbtc8812a2ant_lps_notify(btcoexist, type) do {} while (0)
+#define	ex_halbtc8812a2ant_scan_notify(btcoexist, type) do {} while (0)
+#define	ex_halbtc8812a2ant_connect_notify(btcoexist, type) do {} while (0)
+#define	ex_halbtc8812a2ant_media_status_notify(btcoexist, type) do {} while (0)
+#define	ex_halbtc8812a2ant_specific_packet_notify(btcoexist, type) do {} while (0)
+#define	ex_halbtc8812a2ant_bt_info_notify(btcoexist, tmp_buf, length) do {} while (0)
+#define	ex_halbtc8812a2ant_rf_status_notify(btcoexist, type) do {} while (0)
+#define	ex_halbtc8812a2ant_halt_notify(btcoexist) do {} while (0)
+#define	ex_halbtc8812a2ant_periodical(btcoexist) do {} while (0)
+#define	ex_halbtc8812a2ant_display_coex_info(btcoexist) do {} while (0)
+#define	ex_halbtc8812a2ant_dbg_control(btcoexist, op_code, op_len, pdata) do {} while (0)
 #endif
 
 #endif
