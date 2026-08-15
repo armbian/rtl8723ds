@@ -358,7 +358,7 @@ struct led_priv {
 			(adapter)->ledpriv.LedControlHandler((adapter), (LedAction)); \
 	} while (0)
 #else /* CONFIG_SW_LED */
-#define rtw_led_control(adapter, LedAction)
+#define rtw_led_control(adapter, LedAction) do {} while (0)
 #endif /* CONFIG_SW_LED */
 
 #define SwLedOn(adapter, pLed) \

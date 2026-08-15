@@ -177,20 +177,20 @@ void ex_halbtc8821a1ant_periodical(IN struct btc_coexist *btcoexist);
 void ex_halbtc8821a1ant_display_coex_info(IN struct btc_coexist *btcoexist);
 
 #else
-#define	ex_halbtc8821a1ant_power_on_setting(btcoexist)
-#define	ex_halbtc8821a1ant_init_hw_config(btcoexist, wifi_only)
-#define	ex_halbtc8821a1ant_init_coex_dm(btcoexist)
-#define	ex_halbtc8821a1ant_ips_notify(btcoexist, type)
-#define	ex_halbtc8821a1ant_lps_notify(btcoexist, type)
-#define	ex_halbtc8821a1ant_scan_notify(btcoexist, type)
-#define	ex_halbtc8821a1ant_connect_notify(btcoexist, type)
-#define	ex_halbtc8821a1ant_media_status_notify(btcoexist, type)
-#define	ex_halbtc8821a1ant_specific_packet_notify(btcoexist, type)
-#define	ex_halbtc8821a1ant_bt_info_notify(btcoexist, tmp_buf, length)
-#define	ex_halbtc8821a1ant_halt_notify(btcoexist)
-#define	ex_halbtc8821a1ant_pnp_notify(btcoexist, pnp_state)
-#define	ex_halbtc8821a1ant_periodical(btcoexist)
-#define	ex_halbtc8821a1ant_display_coex_info(btcoexist)
+#define	ex_halbtc8821a1ant_power_on_setting(btcoexist) do {} while (0)
+#define	ex_halbtc8821a1ant_init_hw_config(btcoexist, wifi_only) do {} while (0)
+#define	ex_halbtc8821a1ant_init_coex_dm(btcoexist) do {} while (0)
+#define	ex_halbtc8821a1ant_ips_notify(btcoexist, type) do {} while (0)
+#define	ex_halbtc8821a1ant_lps_notify(btcoexist, type) do {} while (0)
+#define	ex_halbtc8821a1ant_scan_notify(btcoexist, type) do {} while (0)
+#define	ex_halbtc8821a1ant_connect_notify(btcoexist, type) do {} while (0)
+#define	ex_halbtc8821a1ant_media_status_notify(btcoexist, type) do {} while (0)
+#define	ex_halbtc8821a1ant_specific_packet_notify(btcoexist, type) do {} while (0)
+#define	ex_halbtc8821a1ant_bt_info_notify(btcoexist, tmp_buf, length) do {} while (0)
+#define	ex_halbtc8821a1ant_halt_notify(btcoexist) do {} while (0)
+#define	ex_halbtc8821a1ant_pnp_notify(btcoexist, pnp_state) do {} while (0)
+#define	ex_halbtc8821a1ant_periodical(btcoexist) do {} while (0)
+#define	ex_halbtc8821a1ant_display_coex_info(btcoexist) do {} while (0)
 
 #endif
 
