@@ -620,7 +620,7 @@ ssize_t proc_set_write_reg(struct file *file, const char __user *buffer, size_t 
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	u32 addr, val, len;
 
 	if (count < 3) {
@@ -697,7 +697,7 @@ int proc_get_read_reg(struct seq_file *m, void *v)
 ssize_t proc_set_read_reg(struct file *file, const char __user *buffer, size_t count, loff_t *pos, void *data)
 {
 	struct net_device *dev = data;
-	char tmp[16];
+	char tmp[16] = {0};
 	u32 addr, len;
 
 	if (count < 2) {
@@ -799,7 +799,7 @@ ssize_t proc_set_roam_flags(struct file *file, const char __user *buffer, size_t
 	struct net_device *dev = data;
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
 
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 flags;
 
 	if (count < 1)
@@ -845,7 +845,7 @@ ssize_t proc_set_roam_param(struct file *file, const char __user *buffer, size_t
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
 	struct mlme_priv *mlme = &adapter->mlmepriv;
 
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 rssi_diff_th;
 	u32 scanr_exp_ms;
 	u32 scan_int_ms;
@@ -882,7 +882,7 @@ ssize_t proc_set_roam_tgt_addr(struct file *file, const char __user *buffer, siz
 	struct net_device *dev = data;
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
 
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 addr[ETH_ALEN];
 
 	if (count < 1)
@@ -912,7 +912,7 @@ ssize_t proc_set_ft_flags(struct file *file, const char __user *buffer, size_t c
 	struct net_device *dev = data;
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
 
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 flags;
 
 	if (count < 1)
@@ -1141,7 +1141,7 @@ ssize_t proc_set_backop_flags_sta(struct file *file, const char __user *buffer, 
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
 	struct mlme_ext_priv *mlmeext = &adapter->mlmeextpriv;
 
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 flags;
 
 	if (count < 1)
@@ -1180,7 +1180,7 @@ ssize_t proc_set_backop_flags_ap(struct file *file, const char __user *buffer, s
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
 	struct mlme_ext_priv *mlmeext = &adapter->mlmeextpriv;
 
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 flags;
 
 	if (count < 1)
@@ -1521,7 +1521,7 @@ ssize_t proc_set_rate_ctl(struct file *file, const char __user *buffer, size_t c
 {
 	struct net_device *dev = data;
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 fix_rate;
 	u8 data_fb;
 
@@ -1569,7 +1569,7 @@ ssize_t proc_set_bw_ctl(struct file *file, const char __user *buffer, size_t cou
 {
 	struct net_device *dev = data;
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 fix_bw;
 
 	if (count < 1)
@@ -1615,7 +1615,7 @@ ssize_t proc_set_rx_cnt_dump(struct file *file, const char __user *buffer, size_
 {
 	struct net_device *dev = data;
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 dump_rx_cnt_mode;
 
 	if (count < 1)
@@ -1642,7 +1642,7 @@ ssize_t proc_set_fwdl_test_case(struct file *file, const char __user *buffer, si
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	int num;
 
 	if (count < 1)
@@ -1663,7 +1663,7 @@ ssize_t proc_set_del_rx_ampdu_test_case(struct file *file, const char __user *bu
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	int num;
 
 	if (count < 1)
@@ -1701,7 +1701,7 @@ ssize_t proc_set_dfs_master_test_case(struct file *file, const char __user *buff
 	struct net_device *dev = data;
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
 	struct rf_ctl_t *rfctl = adapter_to_rfctl(adapter);
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 radar_detect_trigger_non;
 	u8 choose_dfs_ch_first;
 
@@ -1730,7 +1730,7 @@ ssize_t proc_set_wait_hiq_empty(struct file *file, const char __user *buffer, si
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	int num;
 
 	if (count < 1)
@@ -2078,7 +2078,7 @@ ssize_t proc_set_hw_status(struct file *file, const char __user *buffer, size_t 
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
 	struct dvobj_priv *dvobj = padapter->dvobj;
 	struct registry_priv *regsty = dvobj_to_regsty(dvobj);
-	char tmp[32];
+	char tmp[32] = {0};
 	u32 enable;
 
 	if (count < 1)
@@ -2166,7 +2166,7 @@ ssize_t proc_set_rx_signal(struct file *file, const char __user *buffer, size_t 
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	u32 is_signal_dbg, signal_strength;
 
 	if (count < 1)
@@ -2219,7 +2219,7 @@ ssize_t proc_set_ht_enable(struct file *file, const char __user *buffer, size_t 
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
 	struct registry_priv	*pregpriv = &padapter->registrypriv;
-	char tmp[32];
+	char tmp[32] = {0};
 	u32 mode;
 
 	if (count < 1)
@@ -2261,7 +2261,7 @@ ssize_t proc_set_bw_mode(struct file *file, const char __user *buffer, size_t co
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
 	struct registry_priv	*pregpriv = &padapter->registrypriv;
-	char tmp[32];
+	char tmp[32] = {0};
 	u32 mode;
 	u8 bw_2g;
 	u8 bw_5g;
@@ -2309,7 +2309,7 @@ ssize_t proc_set_ampdu_enable(struct file *file, const char __user *buffer, size
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
 	struct registry_priv	*pregpriv = &padapter->registrypriv;
-	char tmp[32];
+	char tmp[32] = {0};
 	u32 mode;
 
 	if (count < 1)
@@ -2368,7 +2368,7 @@ ssize_t proc_set_rx_ampdu(struct file *file, const char __user *buffer, size_t c
 	struct registry_priv	*pregpriv = &padapter->registrypriv;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 accept;
 	u8 size;
 
@@ -2411,7 +2411,7 @@ ssize_t proc_set_rx_ampdu_factor(struct file *file, const char __user *buffer
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	u32 factor;
 
 	if (count < 1)
@@ -2455,7 +2455,7 @@ ssize_t proc_set_rx_ampdu_density(struct file *file, const char __user *buffer, 
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	u32 density;
 
 	if (count < 1)
@@ -2499,7 +2499,7 @@ ssize_t proc_set_tx_ampdu_density(struct file *file, const char __user *buffer, 
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	u32 density;
 
 	if (count < 1)
@@ -2579,7 +2579,7 @@ ssize_t proc_set_en_fwps(struct file *file, const char __user *buffer, size_t co
 	struct registry_priv	*pregpriv = &padapter->registrypriv;
 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
 	struct mlme_ext_info	*pmlmeinfo = &(pmlmeext->mlmext_info);
-	char tmp[32];
+	char tmp[32] = {0};
 	u32 mode;
 
 	if (count < 1)
@@ -2635,7 +2635,7 @@ ssize_t proc_set_rx_stbc(struct file *file, const char __user *buffer, size_t co
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
 	struct registry_priv	*pregpriv = &padapter->registrypriv;
-	char tmp[32];
+	char tmp[32] = {0};
 	u32 mode;
 
 	if (count < 1)
@@ -2672,7 +2672,7 @@ ssize_t proc_set_rx_stbc(struct file *file, const char __user *buffer, size_t co
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	u32 enable=0;
 
 	if (count < 1)
@@ -2891,7 +2891,7 @@ ssize_t proc_set_best_channel(struct file *file, const char __user *buffer, size
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
-	char tmp[32];
+	char tmp[32] = {0};
 
 	if (count < 1)
 		return -EFAULT;
@@ -3023,7 +3023,7 @@ ssize_t proc_set_sreset(struct file *file, const char __user *buffer, size_t cou
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	s32 trigger_point;
 
 	if (count < 1)
@@ -3356,7 +3356,7 @@ int proc_get_new_bcn_max(struct seq_file *m, void *v)
 
 ssize_t proc_set_new_bcn_max(struct file *file, const char __user *buffer, size_t count, loff_t *pos, void *data)
 {
-	char tmp[32];
+	char tmp[32] = {0};
 	extern int new_bcn_max;
 
 	if (count < 1)
@@ -3846,7 +3846,7 @@ int proc_get_monitor(struct seq_file *m, void *v)
 
 ssize_t proc_set_monitor(struct file *file, const char __user *buffer, size_t count, loff_t *pos, void *data)
 {
-	char tmp[32];
+	char tmp[32] = {0};
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
 	u8 target_chan, target_offset, target_bw;
@@ -3996,7 +3996,7 @@ ssize_t proc_set_tx_sa_query(struct file *file, const char __user *buffer, size_
 	struct sta_info *psta;
 	_list	*plist, *phead;
 	_irqL	 irqL;
-	char tmp[16];
+	char tmp[16] = {0};
 	u8	mac_addr[NUM_STA][ETH_ALEN];
 	u32 key_type;
 	u8 index;
@@ -4075,7 +4075,7 @@ ssize_t proc_set_tx_deauth(struct file *file, const char __user *buffer, size_t 
 	struct sta_info *psta;
 	_list	*plist, *phead;
 	_irqL	 irqL;
-	char tmp[16];
+	char tmp[16] = {0};
 	u8	mac_addr[NUM_STA][ETH_ALEN];
 	u8 bc_addr[ETH_ALEN] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
 	u32 key_type;
@@ -4180,7 +4180,7 @@ ssize_t proc_set_tx_auth(struct file *file, const char __user *buffer, size_t co
 	struct sta_info *psta;
 	_list	*plist, *phead;
 	_irqL	 irqL;
-	char tmp[16];
+	char tmp[16] = {0};
 	u8	mac_addr[NUM_STA][ETH_ALEN];
 	u8 bc_addr[ETH_ALEN] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
 	u32 tx_auth;
@@ -4242,7 +4242,7 @@ ssize_t proc_set_mcc_enable(struct file *file, const char __user *buffer, size_t
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[255];
+	char tmp[255] = {0};
 	u32 en_mcc = 0;
 
 	if (NULL == buffer) {
@@ -4289,7 +4289,7 @@ ssize_t proc_set_mcc_single_tx_criteria(struct file *file, const char __user *bu
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[255];
+	char tmp[255] = {0};
 	u32 mcc_single_tx_criteria = 0;
 
 	if (NULL == buffer) {
@@ -4339,7 +4339,7 @@ ssize_t proc_set_mcc_ap_bw20_target_tp(struct file *file, const char __user *buf
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[255];
+	char tmp[255] = {0};
 	u32 mcc_ap_bw20_target_tp = 0;
 
 	if (NULL == buffer) {
@@ -4380,7 +4380,7 @@ ssize_t proc_set_mcc_ap_bw40_target_tp(struct file *file, const char __user *buf
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[255];
+	char tmp[255] = {0};
 	u32 mcc_ap_bw40_target_tp = 0;
 
 	if (NULL == buffer) {
@@ -4421,7 +4421,7 @@ ssize_t proc_set_mcc_ap_bw80_target_tp(struct file *file, const char __user *buf
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[255];
+	char tmp[255] = {0};
 	u32 mcc_ap_bw80_target_tp = 0;
 
 	if (NULL == buffer) {
@@ -4462,7 +4462,7 @@ ssize_t proc_set_mcc_sta_bw20_target_tp(struct file *file, const char __user *bu
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[255];
+	char tmp[255] = {0};
 	u32 mcc_sta_bw20_target_tp = 0;
 
 	if (NULL == buffer) {
@@ -4503,7 +4503,7 @@ ssize_t proc_set_mcc_sta_bw40_target_tp(struct file *file, const char __user *bu
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[255];
+	char tmp[255] = {0};
 	u32 mcc_sta_bw40_target_tp = 0;
 
 	if (NULL == buffer) {
@@ -4544,7 +4544,7 @@ ssize_t proc_set_mcc_sta_bw80_target_tp(struct file *file, const char __user *bu
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[255];
+	char tmp[255] = {0};
 	u32 mcc_sta_bw80_target_tp = 0;
 
 	if (NULL == buffer) {
