@@ -23,7 +23,7 @@
 #include <drv_types.h>
 #include <hal_data.h>
 
-#define BT_TMP_BUF_SIZE	100
+#define BT_TMP_BUF_SIZE	128
 
 #define rsprintf snprintf
 

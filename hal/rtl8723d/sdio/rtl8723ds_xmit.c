@@ -517,7 +517,7 @@ thread_return rtl8723ds_xmit_thread(thread_context context)
 	s32 ret;
 	PADAPTER padapter;
 	struct xmit_priv *pxmitpriv;
-	u8 thread_name[20];
+	u8 thread_name[32];
 
 
 	ret = _SUCCESS;

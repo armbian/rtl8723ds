@@ -4221,12 +4221,14 @@ static void halbtc8723d2ant_psd_show_antenna_detect_result(IN struct btc_coexist
 	if (psd_scan->ant_det_result == 5)
 		return;
 
-	CL_SPRINTF(cli_buf, BT_TMP_BUF_SIZE, "\r\n %-35s = %s dB",
-		   "PSD Scan Peak Value", psd_scan->ant_det_peak_val);
+	CL_SPRINTF(cli_buf, BT_TMP_BUF_SIZE, "\r\n %-35s = %.*s dB",
+		   "PSD Scan Peak Value", BT_8723D_2ANT_ANTDET_BUF_LEN - 1,
+		   psd_scan->ant_det_peak_val);
 	CL_PRINTF(cli_buf);
 
-	CL_SPRINTF(cli_buf, BT_TMP_BUF_SIZE, "\r\n %-35s = %s MHz",
-		   "PSD Scan Peak Freq", psd_scan->ant_det_peak_freq);
+	CL_SPRINTF(cli_buf, BT_TMP_BUF_SIZE, "\r\n %-35s = %.*s MHz",
+		   "PSD Scan Peak Freq", BT_8723D_2ANT_ANTDET_BUF_LEN - 1,
+		   psd_scan->ant_det_peak_freq);
 	CL_PRINTF(cli_buf);
 
 
@@ -5450,8 +5452,9 @@ void ex_halbtc8723d2ant_display_coex_info(IN struct btc_coexist *btcoexist)
 
 			if (psd_scan->ant_det_result != 12)
 				CL_SPRINTF(cli_buf, BT_TMP_BUF_SIZE,
-					   "\r\n %-35s = %s",
+					   "\r\n %-35s = %.*s",
 					   "Ant Det PSD Value",
+					   BT_8723D_2ANT_ANTDET_BUF_LEN - 1,
 					   psd_scan->ant_det_peak_val);
 			else
 				CL_SPRINTF(cli_buf, BT_TMP_BUF_SIZE,
