@@ -117,7 +117,7 @@ static int proc_get_drv_cfg(struct seq_file *m, void *v)
 
 static ssize_t proc_set_log_level(struct file *file, const char __user *buffer, size_t count, loff_t *pos, void *data)
 {
-	char tmp[32];
+	char tmp[32] = {0};
 	int log_level;
 
 	if (count < 1)
@@ -772,7 +772,7 @@ static ssize_t proc_set_chan_plan(struct file *file, const char __user *buffer, 
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 chan_plan = RTW_CHPLAN_MAX;
 
 	if (!padapter)
@@ -816,7 +816,7 @@ static ssize_t proc_set_country_code(struct file *file, const char __user *buffe
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	char alpha2[2];
 	int num;
 
@@ -911,7 +911,7 @@ ssize_t proc_set_update_non_ocp(struct file *file, const char __user *buffer, si
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
 	struct mlme_priv *mlme = &adapter->mlmepriv;
 	struct mlme_ext_priv *mlmeext = &adapter->mlmeextpriv;
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 ch, bw = CHANNEL_WIDTH_20, offset = HAL_PRIME_CHNL_OFFSET_DONT_CARE;
 	int ms = -1;
 
@@ -947,7 +947,7 @@ ssize_t proc_set_radar_detect(struct file *file, const char __user *buffer, size
 	struct net_device *dev = data;
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
 	struct rf_ctl_t *rfctl = adapter_to_rfctl(adapter);
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 fake_radar_detect_cnt = 0;
 
 	if (count < 1)
@@ -988,7 +988,7 @@ static ssize_t proc_set_dfs_ch_sel_d_flags(struct file *file, const char __user 
 	struct net_device *dev = data;
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
 	struct rf_ctl_t *rfctl = adapter_to_rfctl(adapter);
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 d_flags;
 	int num;
 
@@ -1029,7 +1029,7 @@ static ssize_t proc_set_udpport(struct file *file, const char __user *buffer, si
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
 	struct recv_priv *precvpriv = &(padapter->recvpriv);
 	int sink_udpport = 0;
-	char tmp[32];
+	char tmp[32] = {0};
 
 
 	if (!padapter)
@@ -1223,7 +1223,7 @@ static ssize_t proc_set_change_bss_chbw(struct file *file, const char __user *bu
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
 	struct mlme_priv *mlme = &(adapter->mlmepriv);
 	struct mlme_ext_priv *mlmeext = &(adapter->mlmeextpriv);
-	char tmp[32];
+	char tmp[32] = {0};
 	s16 ch;
 	s8 bw = -1, offset = -1;
 
@@ -1270,7 +1270,7 @@ static ssize_t proc_set_tx_bw_mode(struct file *file, const char __user *buffer,
 	struct macid_ctl_t *macid_ctl = &adapter->dvobj->macid_ctl;
 	struct mlme_priv *mlme = &(adapter->mlmepriv);
 	struct mlme_ext_priv *mlmeext = &(adapter->mlmeextpriv);
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 bw_mode;
 
 	if (count < 1)
@@ -1680,7 +1680,7 @@ static ssize_t proc_set_btinfo_evt(struct file *file, const char __user *buffer,
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 btinfo[8];
 
 	if (count < 6)
@@ -1996,7 +1996,7 @@ static ssize_t proc_set_skip_band(struct file *file, const char __user *buffer, 
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[6];
+	char tmp[6] = {0};
 	u8 skip_band;
 
 	if (count < 1)
@@ -2044,7 +2044,7 @@ static ssize_t  proc_set_acs(struct file *file, const char __user *buffer, size_
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 acs_satae = 0;
 
 	if (count < 1)
@@ -2416,7 +2416,7 @@ ssize_t proc_set_odm_dbg_comp(struct file *file, const char __user *buffer, size
 {
 	struct net_device *dev = data;
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 
 	u64 dbg_comp;
 
@@ -2455,7 +2455,7 @@ ssize_t proc_set_odm_dbg_level(struct file *file, const char __user *buffer, siz
 {
 	struct net_device *dev = data;
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 
 	u32 dbg_level;
 
@@ -2494,7 +2494,7 @@ static ssize_t proc_set_odm_ability(struct file *file, const char __user *buffer
 {
 	struct net_device *dev = data;
 	_adapter *adapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 
 	u32 ability;
 
@@ -2533,7 +2533,7 @@ static ssize_t proc_set_odm_force_igi_lb(struct file *file, const char __user *b
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	u8 force_igi_lb;
 
 	if (count < 1)
@@ -2571,7 +2571,7 @@ ssize_t proc_set_odm_adaptivity(struct file *file, const char __user *buffer, si
 {
 	struct net_device *dev = data;
 	_adapter *padapter = (_adapter *)rtw_netdev_priv(dev);
-	char tmp[32];
+	char tmp[32] = {0};
 	u32 TH_L2H_ini;
 	u32 TH_L2H_ini_mode2;
 	s8 TH_EDCCA_HL_diff;
