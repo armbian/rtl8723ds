@@ -96,7 +96,7 @@ typedef struct _NDIS_802_11_FIXED_IEs {
 typedef struct _NDIS_802_11_VARIABLE_IEs {
 	UCHAR  ElementID;
 	UCHAR  Length;
-	UCHAR  data[1];
+	UCHAR  data[];
 } NDIS_802_11_VARIABLE_IEs, *PNDIS_802_11_VARIABLE_IEs;
 
 
