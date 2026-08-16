@@ -690,7 +690,7 @@ phydm_BB_Debug_Info(
 		else if (*pDM_Odm->pBandWidth == ODM_BW40M)
 			factor = "128/108";
 		else if (*pDM_Odm->pBandWidth == ODM_BW20M) {
-			if (RX_HT != 2 || RX_HT != 1)
+			if (RX_HT == 2 || RX_HT == 1)
 				factor = "64/52";	/*HT or VHT*/
 			else
 				factor = "64/48";	/*legacy*/
