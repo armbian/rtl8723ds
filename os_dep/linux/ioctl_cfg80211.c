@@ -1566,10 +1566,10 @@ static int cfg80211_rtw_get_key(struct wiphy *wiphy,
 	, const u8 *mac_addr, void *cookie
 	, void (*callback)(void *cookie, struct key_params *))
 {
-#if 0
 #ifdef RTW_CFG80211_OPS_USE_WDEV
 	struct net_device *ndev = wdev->netdev;
 #endif
+#if 0
 	struct iwm_priv *iwm = ndev_to_iwm(ndev);
 	struct iwm_key *key = &iwm->keys[key_index];
 	struct key_params params;
@@ -4370,13 +4370,11 @@ static int	cfg80211_rtw_add_station(struct wiphy *wiphy,
 	struct station_parameters *params)
 {
 	int ret = 0;
-#ifdef CONFIG_TDLS
 #ifdef RTW_CFG80211_OPS_USE_WDEV
-	_adapter *padapter = (_adapter *)rtw_netdev_priv(wdev->netdev);
 	struct net_device *ndev = wdev->netdev;
-#else
-	_adapter *padapter = (_adapter *)rtw_netdev_priv(ndev);
 #endif
+#ifdef CONFIG_TDLS
+	_adapter *padapter = (_adapter *)rtw_netdev_priv(ndev);
 	struct sta_priv *pstapriv = &padapter->stapriv;
 	struct sta_info *psta;
 #endif /* CONFIG_TDLS */
