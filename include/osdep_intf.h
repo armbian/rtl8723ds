@@ -87,6 +87,7 @@ uint loadparam(_adapter *adapter);
 int rtw_ioctl(struct net_device *dev, struct ifreq *rq, int cmd);
 
 int rtw_init_netdev_name(struct net_device *pnetdev, const char *ifname);
+int rtw_change_ifname(_adapter *padapter, const char *ifname);
 struct net_device *rtw_init_netdev(_adapter *padapter);
 
 void rtw_os_ndev_free(_adapter *adapter);
